@@ -4,4 +4,5 @@ class Group < ApplicationRecord
   has_many :users, through: :usersgroups
   has_many :posts
   has_many :users, through: :posts
+
 end
