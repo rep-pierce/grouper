@@ -5,9 +5,9 @@ UsersGroup.destroy_all
 Post.destroy_all
 
 puts "👥 Seeding users..."
-user1 = User.create(first_name: 'Caitlin', last_name: 'Smith', username: 'csmith', age: 23)
-user2 = User.create(first_name: 'Daniel', last_name: 'Jones', username: 'djones', age: 35)
-user3 = User.create(first_name: 'Ann', last_name: 'Williams', username: 'awilliams', age: 28)
+user1 = User.create(first_name: 'Caitlin', last_name: 'Smith', username: 'csmith', age: 23, password_digest: "a1")
+user2 = User.create(first_name: 'Daniel', last_name: 'Jones', username: 'djones', age: 35, password_digest: "b2")
+user3 = User.create(first_name: 'Ann', last_name: 'Williams', username: 'awilliams', age: 28, password_digest: "c3")
 
 puts "🏘️ Seeding groups..."
 group1 = Group.create(name: 'Travel', description: 'This group is for people who like to travel.', user: user2)
