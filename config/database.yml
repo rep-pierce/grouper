@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: grouper_production
-  username: grouper
-  password: <%= ENV["GROUPER_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
