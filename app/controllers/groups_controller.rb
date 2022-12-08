@@ -6,8 +6,18 @@ class GroupsController < ApplicationController
     end
 
     def show
-        group = Group.find_by(id: params[:id])
-        render json: group, include: :posts, status: :ok
+        group = find_group
+        render json: group, status: :ok
+    end
+
+    private
+
+    def group_params
+        params.permit(:name, :description, :user)
+    end
+
+    def find_group
+        group = Group.find(params[:id])
     end
 
 end
