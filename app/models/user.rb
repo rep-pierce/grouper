@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-    has_many :groups
-    has_many :usersgroups
-    has_many :groups, through: :usersgroups
-    has_many :posts
-    has_many :groups, through: :posts
+    has_many :groups, dependent: :destroy
+    has_many :usersgroups, dependent: :destroy
+    has_many :groups, through: :usersgroups, dependent: :destroy
+    has_many :posts, dependent: :destroy
+    has_many :groups, through: :posts, dependent: :destroy
 end
