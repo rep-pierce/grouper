@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
+import HomePage from "./components/HomePage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,26 +17,17 @@ function App() {
     fetch('/groups')
     .then((r) => r.json())
     .then(setGroups)
-  }, [groups])
-
-  function renderGroups(){
-    return groups.map(group => <h2 key={group.id}>{group.name}</h2>)
-  }
+  }, [])
 
   return (
-    <BrowserRouter>
       <div className="App">
-        <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
-          </Route>
-          <Route path="/">
-            <h1>Page Count: {count}</h1>
-            {renderGroups()}
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/" 
+          element={<HomePage 
+          groups={groups}
+          />}/>
+        </Routes>
       </div>
-    </BrowserRouter>
   );
 }
 
