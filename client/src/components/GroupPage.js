@@ -6,6 +6,7 @@ function GroupPage({group, setGroup}){
     const navigate = useNavigate()
 
     function handleHome(){
+        // TODO: useEffect to clear side effect: clearing group
         setGroup({})
         navigate('/')
     }
