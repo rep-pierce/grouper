@@ -25,7 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage groups={groups} setGroup={setGroup} />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/group" element={<GroupPage groups={groups} setGroups={setGroups} group={group} setGroup={setGroup} />} />
+            <Route path="/group" element={<GroupPage group={group} setGroup={setGroup} />} />
           </Routes>
         </div>
       </header>
