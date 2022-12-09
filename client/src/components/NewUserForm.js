@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewUserForm = ({ formData, handleChange, errors, setErrors, currentUser, setCurrentUser}) => {
+const NewUserForm = ({ formData, handleChange, setErrors, setCurrentUser, navigate}) => {
     
     function handleSubmit(e){
         e.preventDefault();
@@ -24,11 +24,9 @@ const NewUserForm = ({ formData, handleChange, errors, setErrors, currentUser, s
                 res.json().then( e => setErrors(Object.entries(e.error).flat()))
             }
         })
-        
+        .then(navigate('/home'))
     }
     
-
-
     return(
         <div className="New-user-card">
             <form onSubmit={handleSubmit}>
