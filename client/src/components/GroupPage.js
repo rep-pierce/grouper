@@ -8,7 +8,7 @@ function GroupPage({group, setGroup}){
     function handleHome(){
         // TODO: useEffect to clear side effect: clearing group
         setGroup({})
-        navigate('/')
+        navigate('/home')
     }
 
     return(
