@@ -18,7 +18,7 @@ const Navbar = ({ currentUser, setCurrentUser }) => {
         fetch("/logout", {
             method: "DELETE",
         }).then(() => setCurrentUser(""))
-        .then(navigate("/"))
+            .then(navigate("/"))
     }
 
     return (
@@ -26,7 +26,16 @@ const Navbar = ({ currentUser, setCurrentUser }) => {
             <div className="site-title">Grouper</div>
             <ul>
                 {/* TODO: REDO HOMER -> MYGROUPER */}
-                { !currentUser ? <CustomLink to="/">Login</CustomLink> : <><CustomLink><button onClick={handleLogout}>Logout</button></CustomLink><CustomLink to="/home">Home</CustomLink></> }
+                {!currentUser ? <CustomLink to="/">Login</CustomLink>
+                    :
+                    <>
+                        <CustomLink>
+                            <button onClick={handleLogout}>Logout</button>
+                        </CustomLink>
+                        <CustomLink to="/home">Home</CustomLink>
+                        <CustomLink to="/groups">Groups</CustomLink>
+                    </>
+                }
             </ul>
         </nav>
     )

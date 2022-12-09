@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LoginForm = ({ errors, setErrors, currentUser, setCurrentUser, navigate }) => {
+const LoginForm = ({ setErrors, setCurrentUser, navigate }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -18,11 +18,7 @@ const LoginForm = ({ errors, setErrors, currentUser, setCurrentUser, navigate })
             username: username,
             password: password
         }
-        // const user = {
-        //     username: formData.username,
-        //     password: formData.password,
-        //     password_confirmation: formData.passwordConfirmation,
-        // }
+
         fetch(`/login`, {
             method: "POST",
             headers: {
@@ -38,8 +34,6 @@ const LoginForm = ({ errors, setErrors, currentUser, setCurrentUser, navigate })
                 }
             })
             .then(navigate('/home'));
-
-            
     }
 
     return (
@@ -54,7 +48,7 @@ const LoginForm = ({ errors, setErrors, currentUser, setCurrentUser, navigate })
                     <input type="password" id="pass" name="password" value={password} onChange={(e) => handlePasswordChange(e)} />
                 </div>
                 <div>
-                    <button className='button' type="submit" value="Login" /*onClick={() => setLogin(true)}*/>
+                    <button className='button' type="submit" value="Login">
                     Login
                     </button>
                 </div>

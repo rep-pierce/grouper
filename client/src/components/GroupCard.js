@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
-function GroupCard({group, setGroup}){
+function GroupCard({group}){
     const navigate = useNavigate()
 
     function handleGroupPage(){
-        setGroup(group)
-        navigate('/group')
+        navigate(`${group.id}`)
     }
 
     return(

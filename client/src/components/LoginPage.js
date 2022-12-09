@@ -42,7 +42,6 @@ const LoginPage = ({ currentUser, setCurrentUser, login, setLogin }) => {
                 setErrors={setErrors}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
-                // login={login}
                 setLogin={setLogin}
                 navigate={navigate}
                 />
