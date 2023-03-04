@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import EditPostForm from './EditPostForm';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { postStateAtom, fetchGroupsStateAtom, userStateAtom, currentUserStateAtom } from '../recoil/atoms';
 
-function PostCard({ post, user, group, fetchGroups, currentUser }) {
+const PostCard = () => {
     const [openEdit, setOpenEdit] = useState(false);
+    const post = useRecoilValue(postStateAtom);
+    const fetchGroups = useSetRecoilState(fetchGroupsStateAtom);
+    const user = useRecoilValue(userStateAtom);
+    const currentUser = useRecoilValue(currentUserStateAtom);
+
+
 
     const handleDelete = () => {
         fetch(`/posts/${post.id}`, {
@@ -33,7 +41,7 @@ function PostCard({ post, user, group, fetchGroups, currentUser }) {
             <p>{post.content}</p>
             <p>{post.image}</p>
             {visibleButtons()}
-            {openEdit ? <EditPostForm post={post} fetchGroups={fetchGroups} currentUser={currentUser} group={group} /> : null}
+            {openEdit ? <EditPostForm /> : null}
         </div>
     )
 }

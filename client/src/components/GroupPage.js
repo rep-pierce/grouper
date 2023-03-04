@@ -1,9 +1,12 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from 'recoil';
+import { groupStateAtom } from '../recoil/atoms';
 
 
-function GroupPage({group, setGroup}){
+const GroupPage = () => {
     const navigate = useNavigate()
+    const [group, setGroup] = useRecoilState(groupStateAtom)
 
     function handleHome(){
         // TODO: useEffect to clear side effect: clearing group

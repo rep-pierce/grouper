@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import React from "react";
+// import { useParams } from "react-router-dom"
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { groupsStateAtom, postSubStateAtom } from "../recoil/atoms";
 import PostCard from "./PostCard";
 import PostForm from "./PostForm";
 
-function GroupView({ groups, currentUser, setGroups, postSub, setPostSub, fetchGroups }) {
-    let params = useParams()
+const GroupView = () => {
+    // let params = useParams()
     // console.log(params)
+    const groups = useRecoilValue(groupsStateAtom);
+    const setFoundGroup = useSetRecoilState();
+    // const [postSub, setPostSub] = useRecoilState(postSubStateAtom)
+
+    console.log(groups)
 
 
     const foundGroup = groups.find(group => group.id == params.groupId)
+    setFoundGroup(foundGroup);
 
     function handleRenderPosts() {
-        // console.log(foundGroup)
-        return foundGroup.posts.map(post => <PostCard key={post.id} post={post} user={foundGroup.user} setGroups={setGroups} fetchGroups={fetchGroups} currentUser={currentUser} group={foundGroup} />)
+        console.log(foundGroup)
+        return foundGroup.posts.map(post => <PostCard key={post.id} post={post} />)
 
     }
     return (
@@ -23,7 +31,7 @@ function GroupView({ groups, currentUser, setGroups, postSub, setPostSub, fetchG
                 <div className="Group-posts-wrapper">
                     {handleRenderPosts()}
                 </div>
-                <PostForm currentUser={currentUser} group={foundGroup} />
+                <PostForm />
             </div>
         </div>
     )

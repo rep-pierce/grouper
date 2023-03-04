@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { currentUserStateAtom, groupStateAtom, postStateAtom } from '../recoil/atoms';
 
 const PostForm = ({ currentUser, group }) => {
-    const [post, setPost] = useState({});
+    const setPost = useSetRecoilState(postStateAtom);
+    const currentUser = useRecoilValue(currentUserStateAtom);
+    const group = useRecoilValue(groupStateAtom);
     const [formData, setFormData] = useState({
         title: '',
         image: '',
         content: '',
     })
-    const [errors, setErrors] = useState([])
-    const [display, setDisplay] = useState('login')
+    // const [errors, setErrors] = useState([])
+    // const [display, setDisplay] = useRecoilState(displayStateAtom)
 
     const handleChange = (e) => {
         const value = e.target.value;

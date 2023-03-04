@@ -1,16 +1,17 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { groupsStateAtom } from "../recoil/atoms";
 import GroupCard from "./GroupCard";
 
-function Homepage({groups, setGroup}){
 
-    function createGroupCards(){
-        return groups.map(group => <GroupCard key={group.id} group={group} setGroup={setGroup} />)
-    }
+const Homepage = () => {
+    const groups = useRecoilValue(groupsStateAtom);
+
 
     return(
         <div className="Home-page-div">
             <div className="Group-cards">
-                {createGroupCards()}
+                {groups.map(group => <GroupCard key={group.id} group={group} />) }
             </div>
         </div>
     )
